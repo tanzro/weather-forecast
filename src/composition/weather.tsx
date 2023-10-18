@@ -1,5 +1,7 @@
-import { styled } from "@stitches/react";
 import Card from "../components/card";
+import stitches from "../stitches";
+
+const { styled } = stitches;
 
 const Container = styled("div", {
   height: "100vh",

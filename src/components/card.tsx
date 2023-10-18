@@ -10,10 +10,6 @@ const Container = styled("div", {
   justifyContent: "space-around",
   border: "2px solid #E7E7E7",
   borderRadius: 20,
-
-  "& p": {
-    margin: 0,
-  },
 });
 
 const Day = styled("p", {});
