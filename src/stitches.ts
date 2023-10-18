@@ -8,18 +8,9 @@ const stitches = createStitches({
   },
   theme: {
     colors: {
-      aliceBlue: "#F4FAFF",
-      davyGrey: "#535657",
-
-      cadetBlue: "#4F646F",
-      platinum: "#DEE7E7",
-
-      darkKhaki: "#B5BA72",
-      darkSlateBlue: "#4F359B",
-
-      // elements
-      bg: "$aliceBlue",
-      fg: "$davyGrey",
+      primary: "#696969",
+      secondary: "#BBBBBB",
+      tertiary: "#030303",
     },
     space: {
       xxs: "0.422rem",

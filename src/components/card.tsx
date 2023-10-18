@@ -2,21 +2,29 @@ import { styled } from "@stitches/react";
 
 const Container = styled("div", {
   width: "fit-content",
-  height: 100,
+  height: 180,
   padding: 10,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "space-around",
-  border: "2px solid #E7E7E7",
+  border: "2px solid $secondary",
   borderRadius: 20,
 });
 
-const Day = styled("p", {});
+const Day = styled("p", {
+  color: "$tertiary",
+  fontWeight: "bold",
+});
 
-const Temperature = styled("p", {});
+const Temperature = styled("p", {
+  color: "$primary",
+  fontSize: "$lg",
+});
 
-const Condition = styled("p", {});
+const Condition = styled("p", {
+  color: "$secondary",
+});
 
 interface CardProps {
   day: string;
