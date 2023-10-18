@@ -28,7 +28,7 @@ const Condition = styled("p", {
 
 interface CardProps {
   day: string;
-  temperature: number;
+  temperature: number | undefined;
   condition: string;
 }
 
