@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Card from "../components/card";
 import stitches from "../stitches";
 import { WeatherData, WeatherService } from "../services/weather";
+import SearchBox from "../components/search";
+import { kelvinToCelsius } from "../utils/convert-temperature";
 
 const { styled } = stitches;
 
@@ -14,8 +16,8 @@ const Container = styled("div", {
 export default function Weather() {
   const [weatherData, setWeatherData] = useState<WeatherData>();
 
-  const getWeather = () => {
-    WeatherService.getWeather("uberlandia")
+  const getWeather = (city: string) => {
+    WeatherService.getWeather(city)
       .then((response) => {
         setWeatherData(response);
         console.log(response);
@@ -25,15 +27,23 @@ export default function Weather() {
       });
   };
 
-  useEffect(() => {
-    getWeather();
-  }, []);
+  const handleSearch = (searchQuery: string) => {
+    getWeather(searchQuery);
+  };
+
+  function getTemperatureInCelsius() {
+    if (weatherData && weatherData.main) {
+      return kelvinToCelsius(weatherData.main.temp);
+    }
+    return undefined;
+  }
 
   return (
     <Container>
+      <SearchBox onSearch={handleSearch} />
       <Card
         day="Quarta-Feira"
-        temperature={weatherData?.main.temp}
+        temperature={getTemperatureInCelsius()}
         condition="Ensolarado"
       />
     </Container>
