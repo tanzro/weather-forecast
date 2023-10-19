@@ -29,7 +29,7 @@ const Condition = styled("p", {
 interface CardProps {
   day: string;
   temperature: number | undefined;
-  condition: string;
+  condition: string | undefined;
 }
 
 export default function Card({ day, temperature, condition }: CardProps) {

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../components/card";
 import stitches from "../stitches";
 import { WeatherData, WeatherService } from "../services/weather";
 import SearchBox from "../components/search";
 import { kelvinToCelsius } from "../utils/convert-temperature";
+import { getCurrentDayOfWeek } from "../utils/current-day";
 
 const { styled } = stitches;
 
@@ -15,6 +16,7 @@ const Container = styled("div", {
 
 export default function Weather() {
   const [weatherData, setWeatherData] = useState<WeatherData>();
+  const [day, setDay] = useState("");
 
   const getWeather = (city: string) => {
     WeatherService.getWeather(city)
@@ -38,13 +40,17 @@ export default function Weather() {
     return undefined;
   }
 
+  useEffect(() => {
+    setDay(getCurrentDayOfWeek());
+  }, []);
+
   return (
     <Container>
       <SearchBox onSearch={handleSearch} />
       <Card
-        day="Quarta-Feira"
+        day={day}
         temperature={getTemperatureInCelsius()}
-        condition="Ensolarado"
+        condition={weatherData?.weather[0].main}
       />
     </Container>
   );
